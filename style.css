@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+:root {
+    --bg-color: #0e0b1a;
+    --container-bg: #1a1329;
+    --accent-color: #00ffe1;
+    --accent-hover: #00d5bb;
+    --text-color: #eefdfc;
+    --muted-color: #99c8c0;
+    --input-bg: #131023;
+    --input-border: #2e3350;
+    --error-color: #ff4f5e;
+    --radius: 18px;
+    --shadow: 0 20px 40px rgba(0, 255, 225, 0.2);
+    --font-main: 'Orbitron', sans-serif;
+}
+
+body {
+    background: radial-gradient(ellipse at center, #0e0b1a 0%, #070510 100%);
+    font-family: var(--font-main);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* було center, замінили для початку з верху */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    overflow-y: auto; /* замість hidden */
+    animation: fadeInBody 1s ease;
+}
+
+.container {
+    background: linear-gradient(145deg, rgba(26, 19, 41, 0.95), rgba(14, 11, 26, 0.95));
+    padding: 40px 32px;
+    border-radius: var(--radius);
+    max-width: 480px;
+    width: 100%;
+    box-shadow:
+        inset 0 0 30px rgba(0, 255, 225, 0.05),
+        0 0 40px rgba(0, 255, 225, 0.2),
+        0 0 10px rgba(0, 255, 225, 0.15);
+    border: 1.5px solid var(--input-border);
+    perspective: 1000px;
+    animation: popUp 0.8s ease forwards;
+    transform-style: preserve-3d;
+}
+
+.container:hover {
+    transform: rotateX(1.5deg) rotateY(1.5deg) scale(1.015);
+    transition: all 0.6s ease-in-out;
+}
+
+h1 {
+    font-size: 26px;
+    color: var(--accent-color);
+    text-align: center;
+    text-shadow: 0 0 8px rgba(0, 255, 225, 0.5);
+    margin-bottom: 10px;
+    animation: slideFadeIn 0.6s ease;
+}
+
+p {
+    color: var(--muted-color);
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+select {
+    background: linear-gradient(135deg, #131023, #0e0b1a);
+    border: 2px solid rgba(0, 255, 225, 0.3);
+    border-radius: 14px;
+    color: #ccfff8;
+    padding: 14px 16px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    width: 100%;
+    margin-top: 14px;
+    box-shadow: 0 0 12px rgba(0, 255, 225, 0.1);
+    background-image: url("data:image/svg+xml;utf8,<svg fill='cyan' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    padding-right: 36px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s ease;
+}
+
+select:hover,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 24px rgba(0, 255, 225, 0.3);
+}
+
+.seed-grid,
+#seedContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.seed-grid input,
+.seed-word {
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius);
+    padding: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.seed-grid input:focus,
+.seed-word:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(0, 255, 225, 0.25);
+}
+
+button {
+    margin-top: 28px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--accent-color), #00ffdd);
+    color: #0e0b1a;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 255, 225, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 18px rgba(0, 255, 225, 0.4);
+}
+
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 10px rgba(0, 255, 225, 0.2);
+}
+
+.warning,
+#validationWarning {
+    background: rgba(255, 79, 94, 0.08);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 14px;
+    margin-top: 16px;
+    animation: fadeInWarning 0.4s ease-in;
+}
+
+.small {
+    font-size: 13px;
+    color: var(--muted-color);
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; background-color: #000; }
+    to { opacity: 1; }
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95) rotateX(8deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateX(0);
+    }
+}
+
+@keyframes fadeInWarning {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideFadeIn {
+    from {
+        transform: translateY(-8px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    select,
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .seed-grid input,
+    .seed-word {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+.lucide {
+    vertical-align: middle;
+    margin-right: 6px;
+    stroke: var(--accent-color);
+    stroke-width: 1.7;
+    height: 20px;
+    width: 20px;
+}
+
+/* Custom Select Dropdown */
+.custom-select-wrapper {
+    position: relative;
+    margin-top: 14px;
+}
+
+.custom-select {
+    position: relative;
+    background: linear-gradient(135deg, #131023, #0e0b1a);
+    border: 2px solid rgba(0, 255, 225, 0.3);
+    border-radius: 14px;
+    font-family: var(--font-main);
+    color: #ccfff8;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 255, 225, 0.1);
+}
+
+.custom-select .selected {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    backdrop-filter: blur(6px);
+    font-size: 14px;
+    border-radius: 14px;
+}
+
+.custom-select .selected::after {
+    content: "";
+    border: solid var(--accent-color);
+    border-width: 0 2px 2px 0;
+    padding: 5px;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-left: 12px;
+    
+}
+
+.custom-select.open .selected::after {
+    transform: rotate(-135deg);
+    
+}
+
+.custom-select .options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #0e0b1a;
+    border: 2px solid var(--input-border);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 8px 16px rgba(0, 255, 225, 0.1);
+    z-index: 5;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    
+}
+
+.custom-select.open .options {
+    display: block;
+    
+}
+
+.custom-select .options li {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    
+}
+
+.custom-select .options li:hover {
+    background-color: rgba(0, 255, 225, 0.05);
+    color: var(--accent-color);
+    
+}
+
+.wallet-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted-color);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding-left: 2px;
+}
+
+.profile-card {
+    padding: 15px;
+    border: 1px solid var(--input-border, #444);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 0 6px rgba(0, 255, 0, 0.1);
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
