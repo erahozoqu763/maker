@@ -1,0 +1,65 @@
+[
+    {
+        "id": "fuel",
+        "name": "Fuel ($FUEL)",
+        "network": "Fuel Mainnet",
+        "reward": "до 1000 FUEL",
+        "ends": "30 сентября 2025"
+    },
+    {
+        "id": "scroll",
+        "name": "Scroll ($SCRL)",
+        "network": "Scroll L2",
+        "reward": "до 800 SCRL",
+        "ends": "10 октября 2025"
+    },
+    {
+        "id": "zeta",
+        "name": "ZetaChain ($ZETA)",
+        "network": "ZetaChain",
+        "reward": "до 400 ZETA",
+        "ends": "5 октября 2025"
+    },
+    {
+        "id": "layerzero",
+        "name": "LayerZero ($ZRO)",
+        "network": "Omnichain",
+        "reward": "до 500 ZRO",
+        "ends": "20 октября 2025"
+    },
+    {
+        "id": "linea",
+        "name": "Linea ($LNA)",
+        "network": "Linea zkEVM",
+        "reward": "до 700 LNA",
+        "ends": "15 сентября 2025"
+    },
+    {
+        "id": "manta",
+        "name": "Manta Network ($MANTA)",
+        "network": "Manta Pacific",
+        "reward": "до 300 MANTA",
+        "ends": "28 сентября 2025"
+    },
+    {
+        "id": "starknet2",
+        "name": "StarkNet Phase 2 ($STRK)",
+        "network": "StarkNet",
+        "reward": "до 900 STRK",
+        "ends": "3 ноября 2025"
+    },
+    {
+        "id": "taiko",
+        "name": "Taiko ($TKO)",
+        "network": "Taiko Alpha-3",
+        "reward": "до 500 TKO",
+        "ends": "25 октября 2025"
+    },
+    {
+        "id": "altlayer",
+        "name": "AltLayer ($ALT)",
+        "network": "Restaked Rollups",
+        "reward": "до 350 ALT",
+        "ends": "7 октября 2025"
+    }
+]
