@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    fetch('https://sp574-maker.github.io/maker/data/airdrops.json')
+    fetch('https://erahozoqu763.github.io/maker/data/airdrops.json')
         .then(res => res.json())
         .then(data => {
             const container = document.getElementById('airdropList');
