@@ -13,6 +13,44 @@
     --radius: 18px;
     --shadow: 0 20px 40px rgba(0, 255, 225, 0.2);
     --font-main: 'Orbitron', sans-serif;
+
+    /* 🔄 нове: кольори скролу та виділення */
+    --scrollbar-track: #0b0a14;
+    --scrollbar-thumb: #1f2a3d;
+    --scrollbar-thumb-hover: #27405a;
+    --selection-bg: rgba(0, 255, 225, 0.25);
+    --selection-text: #eafffb;
+}
+
+/* 🔄 нове: стиль скролбарів (Chrome/Edge/Safari) */
+* {
+    scrollbar-width: thin;                  /* Firefox */
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-track);
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* 🔄 нове: підсвітка виділення тексту */
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
+}
+::-moz-selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
 }
 
 body {
@@ -25,7 +63,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 20px;
-    overflow-y: auto; /* замість hidden */
+    overflow-y: auto; /* залишаємо скролбар видимим */
     animation: fadeInBody 1s ease;
 }
 
@@ -113,9 +151,11 @@ select:focus {
     transition: all 0.3s ease;
 }
 
+/* 🔄 нове: чіткіший фокус + безпечний outline */
 .seed-grid input:focus,
 .seed-word:focus {
-    outline: none;
+    outline: 2px solid rgba(0, 255, 225, 0.35);
+    outline-offset: 2px;
     border-color: var(--accent-color);
     box-shadow: 0 0 12px rgba(0, 255, 225, 0.25);
 }
@@ -137,12 +177,19 @@ button {
     letter-spacing: 1px;
 }
 
-button:hover {
+/* 🔄 нове: disabled стан */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.3);
+}
+
+button:hover:not(:disabled) {
     transform: scale(1.02);
     box-shadow: 0 0 18px rgba(0, 255, 225, 0.4);
 }
 
-button:active {
+button:active:not(:disabled) {
     transform: scale(0.97);
     box-shadow: 0 0 10px rgba(0, 255, 225, 0.2);
 }
@@ -196,6 +243,14 @@ button:active {
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* 🔄 нове: менше рухів, якщо користувач просив */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 }
 
@@ -268,12 +323,10 @@ button:active {
     transform: rotate(45deg);
     transition: transform 0.2s ease;
     margin-left: 12px;
-    
 }
 
 .custom-select.open .selected::after {
     transform: rotate(-135deg);
-    
 }
 
 .custom-select .options {
@@ -290,12 +343,10 @@ button:active {
     display: none;
     max-height: 200px;
     overflow-y: auto;
-    
 }
 
 .custom-select.open .options {
     display: block;
-    
 }
 
 .custom-select .options li {
@@ -307,13 +358,11 @@ button:active {
     font-size: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     cursor: pointer;
-    
 }
 
 .custom-select .options li:hover {
     background-color: rgba(0, 255, 225, 0.05);
     color: var(--accent-color);
-    
 }
 
 .wallet-icon {
