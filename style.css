@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 :root {
-    --bg-color: #0e0b1a;
-    --container-bg: #1a1329;
-    --accent-color: #00ffe1;
-    --accent-hover: #00d5bb;
-    --text-color: #eefdfc;
-    --muted-color: #99c8c0;
-    --input-bg: #131023;
-    --input-border: #2e3350;
-    --error-color: #ff4f5e;
+    --bg-color: #0f1b14; /* темно-зелений фон */
+    --container-bg: #163222; /* глибший зелений для блоків */
+    --accent-color: #f7b733; /* жовто-золотий акцент */
+    --accent-hover: #d89a2a; /* темніший жовтий при наведенні */
+    --text-color: #fefaf3; /* майже білий */
+    --muted-color: #cfc5a6; /* приглушений жовтуватий */
+    --input-bg: #12251b; /* темний зелений */
+    --input-border: #265c3a; /* бордер зеленого відтінку */
+    --error-color: #ff4f5e; /* можна залишити червоний */
     --radius: 18px;
-    --shadow: 0 20px 40px rgba(0, 255, 225, 0.2);
+    --shadow: 0 20px 40px rgba(247, 183, 51, 0.2);
     --font-main: 'Orbitron', sans-serif;
 
-    /* 🔄 нове: кольори скролу та виділення */
-    --scrollbar-track: #0b0a14;
-    --scrollbar-thumb: #1f2a3d;
-    --scrollbar-thumb-hover: #27405a;
-    --selection-bg: rgba(0, 255, 225, 0.25);
-    --selection-text: #eafffb;
+    /* 🔄 Кольори скролу та виділення */
+    --scrollbar-track: #0b1a13;
+    --scrollbar-thumb: #265c3a;
+    --scrollbar-thumb-hover: #2f7649;
+    --selection-bg: rgba(247, 183, 51, 0.25);
+    --selection-text: #fffaf0;
 }
 
 /* 🔄 нове: стиль скролбарів (Chrome/Edge/Safari) */
