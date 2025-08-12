@@ -3,36 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeChain Miner</title>
-    <link rel="stylesheet" href="https://erahozoqu763.github.io/maker/mainer.css">
-    <script src="https://erahozoqu763.github.io/maker/mainer.js" defer></script>
+    <title>SafeChain PowerMine</title>
+    <link rel="stylesheet" href="mainer.css">
+    <script src="mainer.js" defer></script>
 </head>
 <body>
     <section class="miner-card">
-        <div class="fan">
-            <img id="fanImg" src="https://erahozoqu763.github.io/maker/img/mainer.png" alt="SafeChain Miner Fan" draggable="false"/>
-            <div class="stat-grid">
-                <div class="stat">
-                    <span class="label">⚡ Швидкість</span>
-                    <b id="speed">—</b><span class="unit">coin/сек</span>
-                </div>
-                <div class="stat">
-                    <span class="label">⛏️ Намайнено</span>
-                    <b id="mined">—</b><span class="unit">SC</span>
-                </div>
-                <div class="stat">
-                    <span class="label">🔋 Буст</span>
-                    <b id="boost">—</b>
-                </div>
+        <h1 class="title">💎 PowerMine</h1>
+
+        <div class="fan-container">
+            <img id="fanImg" src="img/mainer.png" alt="SafeChain Miner Fan" draggable="false"/>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat">
+                <span class="label">⚡ Швидкість</span>
+                <b id="speed">0</b><span class="unit"> SC/сек</span>
+            </div>
+            <div class="stat">
+                <span class="label">⛏️ Намайнено</span>
+                <b id="mined">0</b><span class="unit"> SC</span>
+            </div>
+            <div class="stat">
+                <span class="label">💰 Баланс</span>
+                <b id="balance">0</b><span class="unit"> SC</span>
+            </div>
+            <div class="stat">
+                <span class="label">🔋 Буст</span>
+                <b id="boost">x1</b>
             </div>
         </div>
 
         <div class="actions">
-            <button id="buy" class="btn btn-accent">Купити 100 SC</button>
+            <button id="earn" class="btn btn-green">Отримати 10 SC</button>
             <button id="charge" class="btn btn-gold">Зарядити (50 SC)</button>
         </div>
 
-        <p class="hint">Майнінг іде на сервері навіть коли WebApp закритий.</p>
+        <p class="hint">Майнінг продовжується навіть після закриття WebApp — дані зберігаються локально.</p>
     </section>
 </body>
 </html>
