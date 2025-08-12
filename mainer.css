@@ -1,3 +1,4 @@
+/* ====== Базові змінні ====== */
 :root {
     --bg-color: #0e0b1a;
     --container-bg: #1a1329;
@@ -12,107 +13,162 @@
     --shadow: 0 20px 40px rgba(0, 255, 225, 0.2);
     --font-main: 'Orbitron', sans-serif;
 
+    /* Скрол та виділення */
     --scrollbar-track: #0b0a14;
     --scrollbar-thumb: #1f2a3d;
     --scrollbar-thumb-hover: #27405a;
     --selection-bg: rgba(0, 255, 225, 0.25);
     --selection-text: #eafffb;
-
-    --spin-speed: 2.5s;
 }
 
-body {
-    font-family: var(--font-main);
-    background: var(--bg-color);
-    color: var(--text-color);
+/* ====== Глобальні стилі ====== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* ====== Карточка майнера ====== */
 .miner-card {
-    max-width: 420px;
-    margin: 40px auto;
     background: var(--container-bg);
     border-radius: var(--radius);
     padding: 20px;
     box-shadow: var(--shadow);
     text-align: center;
+    max-width: 400px;
+    width: 100%;
 }
 
-.fan {
-    display: grid;
-    place-items: center;
-    gap: 18px;
-    padding: 16px;
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+/* ====== Фан (кулер) ====== */
+.fan-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
 }
 
 #fanImg {
-    width: 180px;
-    height: 180px;
-    user-select: none;
-    pointer-events: none;
-    transform-origin: 50% 50%;
-    will-change: transform;
-    filter: drop-shadow(0 12px 28px rgba(0,0,0,.35));
-}
-
-.spinning {
-    animation: spin var(--spin-speed) linear infinite;
-}
-
-.boosting {
-    --spin-speed: 0.8s;
+    width: 100%;
+    height: 100%;
+    animation: spin 2s linear infinite;
+    filter: drop-shadow(0 0 15px var(--accent-color));
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
+/* ====== Статистика ====== */
 .stat-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius);
+    padding: 10px;
 }
 
 .stat .label {
-    font-size: 0.85em;
+    font-size: 0.85rem;
     color: var(--muted-color);
     display: block;
+    margin-bottom: 4px;
 }
 
+.stat b {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.unit {
+    font-size: 0.8rem;
+    margin-left: 4px;
+    color: var(--muted-color);
+}
+
+/* ====== Кнопки ====== */
 .actions {
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 16px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .btn {
-    padding: 10px 16px;
+    padding: 12px;
     border-radius: var(--radius);
-    border: none;
+    font-size: 1rem;
+    font-family: var(--font-main);
     cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
     font-weight: bold;
 }
 
-.btn-accent {
+.btn-green {
     background: var(--accent-color);
-    color: #000;
+    color: var(--bg-color);
 }
 
-.btn-accent:hover {
+.btn-green:hover {
     background: var(--accent-hover);
 }
 
 .btn-gold {
     background: gold;
-    color: #000;
+    color: var(--bg-color);
 }
 
+.btn-gold:hover {
+    background: #ffdf4d;
+}
+
+/* ====== Підказка ====== */
 .hint {
-    font-size: 0.8em;
+    margin-top: 15px;
+    font-size: 0.85rem;
     color: var(--muted-color);
-    margin-top: 12px;
+}
+
+/* ====== Скрол ====== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* ====== Виділення тексту ====== */
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
 }
