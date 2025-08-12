@@ -1,78 +1,38 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DEX Обменник — Подключение</title>
-
-    <!-- Orbitron font -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-
-    <!-- Feather Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
-    <!-- Telegram WebApp SDK -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://erahozoqu763.github.io/maker/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeChain Miner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1><i data-feather="shield"></i> Подключение кошелька</h1>
-
-        <p>
-            Для продолжения обмена подключите ваш Web3-кошелёк с помощью seed-фразы.<br>
-            Мы не храним ваши данные и не запрашиваем доступ к средствам.
-        </p>
-
-        <label><i data-feather="credit-card"></i> Выберите кошелёк</label>
-        <div class="custom-select-wrapper">
-            <div class="custom-select" id="walletSelect">
-                <div class="selected">
-                    <img src="https://seeklogo.com/images/M/metamask-logo-09EDE53DBD-seeklogo.com.png" class="wallet-icon" alt="MetaMask" />
-                    MetaMask
+    <section class="miner-card">
+        <div class="fan">
+            <img id="fanImg" src="./mainer.png" alt="SafeChain Miner Fan" draggable="false"/>
+            <div class="stat-grid">
+                <div class="stat">
+                    <span class="label">⚡ Швидкість</span>
+                    <b id="speed">—</b><span class="unit">coin/сек</span>
                 </div>
-                <ul class="options">
-                    <li data-value="MetaMask" onclick="goToWallet('MetaMask')">
-                        <img src="https://seeklogo.com/images/M/metamask-logo-09EDE53DBD-seeklogo.com.png" class="wallet-icon" alt="MetaMask" />
-                        MetaMask
-                    </li>
-                    <li data-value="TrustWallet" onclick="goToWallet('TrustWallet')">
-                        <img src="https://assets.coingecko.com/coins/images/11085/small/Trust.png" class="wallet-icon" alt="Trust Wallet" />
-                        Trust Wallet
-                    </li>
-                    <li data-value="Tonkeeper" onclick="goToWallet('Tonkeeper')">
-                        <img src="https://tonkeeper.com/favicon-32x32.png" class="wallet-icon" alt="Tonkeeper" />
-                        Tonkeeper
-                    </li>
-                    <li data-value="Phantom" onclick="goToWallet('Phantom')">
-                        <img src="https://avatars.githubusercontent.com/u/78782337?s=200&v=4" class="wallet-icon" alt="Phantom Wallet" />
-                        Phantom
-                    </li>
-                </ul>
+                <div class="stat">
+                    <span class="label">⛏️ Намайнено</span>
+                    <b id="mined">—</b><span class="unit">SC</span>
+                </div>
+                <div class="stat">
+                    <span class="label">🔋 Буст</span>
+                    <b id="boost">—</b>
+                </div>
             </div>
         </div>
-        <input type="hidden" id="wallet" name="wallet" value="MetaMask" />
 
-        <label for="length"><i data-feather="list"></i> Количество слов</label>
-        <select id="length" onchange="renderSeedInputs(); clearWarning();">
-            <option value="12">12 слов</option>
-            <option value="24">24 слова</option>
-        </select>
+        <div class="actions">
+            <button id="buy" class="btn btn-accent">Купити 100 SC</button>
+            <button id="charge" class="btn btn-gold">Зарядити (50 SC)</button>
+        </div>
 
-        <div id="seedContainer" class="seed-grid"></div>
-
-        <div id="validationWarning" class="warning" style="display:none;"></div>
-
-        <button id="submitBtn">
-            <i data-feather="link"></i> Подключить
-        </button>
-
-        <p class="small">
-            <i data-feather="lock"></i> Соединение зашифровано AES-256. Мы уважаем вашу приватность.
-        </p>
-    </div>
-    <script src="https://erahozoqu763.github.io/maker/script.js"></script>
+        <p class="hint">Майнінг іде на сервері навіть коли WebApp закритий.</p>
+    </section>
 </body>
 </html>
