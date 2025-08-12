@@ -1,7 +1,3 @@
-// =============== SafeChain PowerMine (Frontend-only) ===============
-// Працює суто в браузері, все зберігається в localStorage.
-// HTML очікує ids: speed, mined, balance, boost, charge, fanImg (та опц. upgrade).
-
 // ---- Налаштування гри ----
 const BASE_RATE = 1e-10;            // SC/сек без зарядки (повільне накопичення)
 const BOOST_FACTOR = 100;            // множник швидкості під час зарядки
@@ -207,12 +203,6 @@ if (el.fan) {
     el.fan.style.animationDuration = `${MAX_SPIN_SEC}s`;
 }
 
-// ================================================================
-// Якщо хочеш відображати зворотній відлік буста — додай елемент і виводь state.chargeLeft
-// Також легко додати «квести» для отримання SC: просто збільшуй state.balance.
-// ================================================================
-
-// Опційно: експорт у window для дебага
 window.PowerMine = {
     get state() { return state; },
     chargeMiner,
