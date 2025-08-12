@@ -1,0 +1,118 @@
+:root {
+    --bg-color: #0e0b1a;
+    --container-bg: #1a1329;
+    --accent-color: #00ffe1;
+    --accent-hover: #00d5bb;
+    --text-color: #eefdfc;
+    --muted-color: #99c8c0;
+    --input-bg: #131023;
+    --input-border: #2e3350;
+    --error-color: #ff4f5e;
+    --radius: 18px;
+    --shadow: 0 20px 40px rgba(0, 255, 225, 0.2);
+    --font-main: 'Orbitron', sans-serif;
+
+    --scrollbar-track: #0b0a14;
+    --scrollbar-thumb: #1f2a3d;
+    --scrollbar-thumb-hover: #27405a;
+    --selection-bg: rgba(0, 255, 225, 0.25);
+    --selection-text: #eafffb;
+
+    --spin-speed: 2.5s;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.miner-card {
+    max-width: 420px;
+    margin: 40px auto;
+    background: var(--container-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.fan {
+    display: grid;
+    place-items: center;
+    gap: 18px;
+    padding: 16px;
+}
+
+#fanImg {
+    width: 180px;
+    height: 180px;
+    user-select: none;
+    pointer-events: none;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    filter: drop-shadow(0 12px 28px rgba(0,0,0,.35));
+}
+
+.spinning {
+    animation: spin var(--spin-speed) linear infinite;
+}
+
+.boosting {
+    --spin-speed: 0.8s;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat .label {
+    font-size: 0.85em;
+    color: var(--muted-color);
+    display: block;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-accent {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+}
+
+.btn-gold {
+    background: gold;
+    color: #000;
+}
+
+.hint {
+    font-size: 0.8em;
+    color: var(--muted-color);
+    margin-top: 12px;
+}
