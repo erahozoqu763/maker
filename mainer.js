@@ -2,8 +2,8 @@
 const BASE_RATE = 1e-9;            // SC/сек без зарядки
 const BOOST_FACTOR = 100;           // множник під час зарядки
 const CHARGE_COST = 50;             // SC за одну зарядку
-const CHARGE_DURATION = 300;        // сек роботи при зарядці (5 хв)
-const UPGRADE_BASE_COST = 200;      // базова ціна апгрейду
+const CHARGE_DURATION = 600;        // сек роботи при зарядці (5 хв)
+const UPGRADE_BASE_COST = 20;      // базова ціна апгрейду
 const UPGRADE_COST_MULT = 2;        // множник ціни апгрейду
 const MIN_SPIN_SEC = 0.3;           // найшвидший оберт кулера (сек)
 const MAX_SPIN_SEC = 6;            // найповільніший оберт кулера (сек)
