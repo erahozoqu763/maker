@@ -100,25 +100,25 @@ function lerp(a, b, t) { return a + (b - a) * t; }
 function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
 
 function chargeMiner() {
-    if (state.balance < CHARGE_COST) return toast("Недостатньо SC для зарядки.");
+    if (state.balance < CHARGE_COST) return toast("Недостаточно SC для зарядки.");
     state.balance -= CHARGE_COST;
     state.chargeLeft += CHARGE_DURATION;
     state.lastTs = nowSec();
     saveState();
     render();
     ensureSpinState();
-    toast(`Заряджено на ${CHARGE_DURATION / 60} хв. 🚀`);
+    toast(`Заряжено на ${CHARGE_DURATION / 60} хв. 🚀`);
 }
 
 function upgradeMiner() {
     const price = currentUpgradeCost();
-    if (state.balance < price) return toast("Недостатньо SC для апгрейду.");
+    if (state.balance < price) return toast("Недостаточно SC для апгрейду.");
     state.balance -= price;
     state.upgradeLevel += 1;
     saveState();
     render();
     ensureSpinState();
-    toast(`Швидкість підвищено! Рівень: x${state.upgradeLevel}`);
+    toast(`Скорость добавленна! Уровень: x${state.upgradeLevel}`);
 }
 
 function currentUpgradeCost() {
@@ -137,7 +137,7 @@ function render() {
     if (el.upgradeBtn) {
         const price = currentUpgradeCost();
         el.upgradeBtn.disabled = state.balance < price;
-        el.upgradeBtn.textContent = `⚡ Прискорити (${formatNum(price, 2)} SC)`;
+        el.upgradeBtn.textContent = `⚡ Ускорить (${formatNum(price, 2)} SC)`;
     }
 }
 
