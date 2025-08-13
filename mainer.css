@@ -27,6 +27,7 @@
     --selection-bg: rgba(0, 255, 225, 0.25);
     --selection-text: #eafffb;
 
+    /* керування швидкістю спіну (JS може змінювати) */
     --spin-duration: 8s;
 }
 
@@ -77,6 +78,7 @@ header .subtitle {
     font-size: .95rem;
 }
 
+.miner-panel,
 .miner-card {
     background: linear-gradient(180deg, var(--container-bg), var(--container-bg-2));
     border-radius: var(--radius);
@@ -84,25 +86,24 @@ header .subtitle {
     box-shadow: var(--shadow);
     border: 1px solid rgba(255,255,255,0.04);
     backdrop-filter: blur(6px);
+}
+
+/* Зворотна сумісність із твоїм `.miner-card` */
+.miner-card {
     max-width: 460px;
     width: 100%;
     text-align: center;
 }
 
 /* ===================== ФАН (КУЛЕР) ===================== */
-.fan-container {
+.fan-container,
+.fan {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
     margin: 6px auto 18px;
     display: grid;
     place-items: center;
-    background: radial-gradient(circle, rgba(0,255,225,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    box-shadow:
-        0 0 25px rgba(0,255,225,0.3),
-        inset 0 0 40px rgba(0,255,225,0.15);
-    animation: pulseGlow 3s ease-in-out infinite;
 }
 
 #fanImg {
@@ -110,28 +111,33 @@ header .subtitle {
     height: 100%;
     filter:
         drop-shadow(0 24px 36px rgba(0,0,0,.45))
-        drop-shadow(0 0 25px rgba(0,255,225,0.4))
-        drop-shadow(0 0 45px rgba(0,255,225,0.25));
+        drop-shadow(0 0 20px rgba(0,255,225,.15));
     transform-origin: 50% 50%;
     animation: spin var(--spin-duration) linear infinite;
-    animation-play-state: paused;
-    transition: transform 0.2s ease;
+    animation-play-state: paused; /* JS вмикає/міняє швидкість */
 }
 
-#fanImg:hover {
-    transform: scale(1.05);
+/* індикатор відсотка заряду (якщо є) */
+.charge-indicator {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: rgba(0,0,0,.5);
+    border: 1px solid rgba(255,255,255,.06);
+    color: var(--accent-color);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: .85rem;
+    box-shadow: var(--glow);
 }
 
+/* анімація обертання */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-@keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 25px rgba(0,255,225,0.3), inset 0 0 40px rgba(0,255,225,0.15); }
-    50% { box-shadow: 0 0 40px rgba(0,255,225,0.5), inset 0 0 55px rgba(0,255,225,0.25); }
-}
-
 /* ===================== СТАТИСТИКА ===================== */
+.stats,
 .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -160,13 +166,14 @@ header .subtitle {
     color: var(--text-color);
 }
 
+.stat small,
 .unit {
     font-size: .8rem;
     color: var(--muted-color);
     margin-left: 4px;
 }
 
-/* ===================== ПРОГРЕС БАР ===================== */
+/* ===================== ПРОГРЕС БАР ЗАРЯДУ ===================== */
 .progress-container {
     margin: 8px 0 18px;
 }
@@ -182,13 +189,15 @@ header .subtitle {
     width: 100%;
     height: 14px;
     border-radius: 999px;
-    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     border: 1px solid rgba(255,255,255,.06);
     overflow: hidden;
     box-shadow: inset 0 2px 6px rgba(0,0,0,.35);
 }
 
-.progress-bar .progress {
+.progress-bar .progress,
+#chargeBar {
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, var(--accent-color), #2bfdfa 60%, rgba(255,255,255,.9));
@@ -222,33 +231,52 @@ header .subtitle {
     transform: translateY(1px) scale(.995);
 }
 
+.btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* зелена (акцент) */
 .btn.btn-green {
     background: linear-gradient(145deg, var(--accent-color), var(--accent-hover));
     color: #00221f;
     box-shadow: 0 10px 24px rgba(0,255,225,.25);
 }
-
 .btn.btn-green:hover { filter: brightness(1.04); }
 
+/* золота */
+.btn.btn-accent,
 .btn.btn-gold {
     background: linear-gradient(145deg, var(--gold), #ffcf33);
     color: #3b2b00;
     box-shadow: 0 10px 24px rgba(255,213,79,.25);
 }
-
+.btn.btn-accent:hover,
 .btn.btn-gold:hover { filter: brightness(1.04); }
 
+/* disabled */
 .btn[disabled] {
     opacity: .55;
     cursor: not-allowed;
     filter: grayscale(.2);
 }
 
+/* одна кнопка в ряд для вузьких екранів */
 @media (max-width: 380px) {
-    .actions { grid-template-columns: 1fr; }
+    .actions {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* ===================== ПІДКАЗКА ===================== */
+/* ===================== ТЕКСТ / ПІДКАЗКИ ===================== */
+.title {
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    text-shadow: 0 0 18px rgba(0,255,225,.25);
+    text-align: center;
+}
+
 .hint {
     margin-top: 14px;
     font-size: .85rem;
@@ -267,6 +295,7 @@ header .subtitle {
     color: var(--selection-text);
 }
 
+/* ===================== РЕЖИМ REDUCED MOTION ===================== */
 @media (prefers-reduced-motion: reduce) {
     #fanImg { animation: none !important; }
     .btn, .progress-bar .progress { transition: none !important; }
