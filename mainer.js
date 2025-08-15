@@ -1,5 +1,5 @@
 // ---- Налаштування гри ----
-const BASE_RATE = 1e-8;            // SC/сек без зарядки
+const BASE_RATE = 1e-5;            // SC/сек без зарядки
 const BOOST_FACTOR = 100;           // множник під час зарядки
 const CHARGE_COST = 50;             // SC за одну зарядку
 const CHARGE_DURATION = 600;        // сек роботи при зарядці (5 хв)
@@ -128,7 +128,7 @@ function currentUpgradeCost() {
 function render() {
     const onBoost = state.chargeLeft > 0;
     const rate = effectiveRate(onBoost);
-    el.speed.textContent = formatNum(rate);
+    el.speed.textContent = formatNum(rate, 8)
     el.mined.textContent = formatNum(state.minedTotal, 9);
     el.balance.textContent = formatNum(state.balance, 9);
     el.boost.textContent = onBoost ? `x${BOOST_FACTOR}` : "x1";
