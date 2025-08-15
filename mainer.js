@@ -91,7 +91,7 @@ function ensureSpinState() {
 }
 
 function mapRateToSpin(rate) {
-    const k = Math.max(1e-12, rate / BASE_RATE);
+    const k = Math.max(1e-9, rate / BASE_RATE);
     const t = clamp(Math.log10(k) / Math.log10(BOOST_FACTOR * 10), 0, 1);
     return lerp(MAX_SPIN_SEC, MIN_SPIN_SEC, t);
 }
