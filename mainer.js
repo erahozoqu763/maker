@@ -1,5 +1,5 @@
 // ---- Налаштування гри ----
-const BASE_RATE = 1e-9;            // SC/сек без зарядки
+const BASE_RATE = 1e-8;            // SC/сек без зарядки
 const BOOST_FACTOR = 100;           // множник під час зарядки
 const CHARGE_COST = 50;             // SC за одну зарядку
 const CHARGE_DURATION = 600;        // сек роботи при зарядці (5 хв)
