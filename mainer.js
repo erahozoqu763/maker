@@ -128,7 +128,7 @@ function currentUpgradeCost() {
 function render() {
     const onBoost = state.chargeLeft > 0;
     const rate = effectiveRate(onBoost);
-    el.speed.textContent = formatNum(rate, 12);
+    el.speed.textContent = formatNum(rate);
     el.mined.textContent = formatNum(state.minedTotal, 9);
     el.balance.textContent = formatNum(state.balance, 9);
     el.boost.textContent = onBoost ? `x${BOOST_FACTOR}` : "x1";
